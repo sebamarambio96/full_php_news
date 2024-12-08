@@ -14,6 +14,7 @@ class NewsController
   // Página de detalle de una noticia
   public function showById($id)
   {
+    AuthMiddleware::check();
     $news = $this->newsModel->getById($id);
     if (!$news) {
       http_response_code(404);
@@ -27,6 +28,7 @@ class NewsController
   // Mostrar la página de creación de noticias
   public function showCreatePage($success = '', $error = '')
   {
+    AuthMiddleware::check();
     $error = $error;
     $success = $success;
     $news = $this->newsModel->getAll();
@@ -38,6 +40,7 @@ class NewsController
   // Manejar la creación de noticias
   public function store()
   {
+    AuthMiddleware::check();
     $error = '';
     $success = '';
 
@@ -88,6 +91,7 @@ class NewsController
   // Mostrar la página de edición de noticias
   public function showEditPage($id, $error = '', $success = '')
   {
+    AuthMiddleware::check();
     $success = $success;
     $news = $this->newsModel->getById($id);
     if (!$news) {
@@ -101,6 +105,7 @@ class NewsController
   // Manejar la actualización de noticias
   public function update($id)
   {
+    AuthMiddleware::check();
     $error = '';
     $success = '';
 
@@ -156,6 +161,7 @@ class NewsController
   // Eliminar una noticia
   public function delete($id)
   {
+    AuthMiddleware::check();
     try {
       $this->newsModel->deleteById($id);
       $success = "Noticia eliminada con éxito.";
