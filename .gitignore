@@ -1,0 +1,5 @@
+# Ignorar el directorio de dependencias de Composer
+/vendor/
+
+# Ignorar archivos de configuración locales de Composer
+composer.lock
